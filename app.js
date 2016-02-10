@@ -26,7 +26,7 @@ app.get('/weather/:location', function(request, response) {
     // In here we will make our HTTP request to the Open Library API
 });
 
-  http.get('http://api.openweathermap.org/data/2.5/weather?q='+request.params.{city name} + '&jscmd=data&format=json', function(res) {
+  http.get('http://api.openweathermap.org/data/2.5/weather?q='+request.params.location + '&jscmd=data&format=json', function(res) {
     var body = '';
     res.on('data', function(d) {
       body += d;
