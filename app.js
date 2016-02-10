@@ -2,10 +2,10 @@ var express = require('express');
 var app = express();
 var http = require('http');
 var expressLayouts = require('express-ejs-layouts');
-
+var apiKey = '5c40c0443b3cd8ef57196df48e4f638a'
 
 app.get('/weather', function(req, res) {
-  res.send('Hello World!') 
+  res.render('weather'); 
 });
 
 
@@ -17,28 +17,27 @@ app.use(expressLayouts);
 app.use(express.static('public'));
 
 app.get('/weather', function(req, res) {
-    res.render('weather')
+  res.render('weather')
 });
 
 
 //CALLBACK: Getting the data from the API server to display it to us: 
-app.get('/weather/:location', function(request, response) {
-    // In here we will make our HTTP request to the Open Library API
-});
+app.get('/weather/:city', function(request, response) {
+    // In here we will make our HTTP request to the  API
 
-  http.get('http://api.openweathermap.org/data/2.5/weather?q='+request.params.location + '&jscmd=data&format=json', function(res) {
-    var body = '';
-    res.on('data', function(d) {
-      body += d;
-    });
+    http.get('http://api.openweathermap.org/data/2.5/weather?q='+request.params.city + '&appid=' + apiKey, function(res) {
+      var body = '';
+      res.on('data', function(d) {
+        body += d;
+      });
 
-    res.on('end', function() {
-      var weather = JSON.parse(body);
-      response.send(weather['location:' + request.params.location])
+      res.on('end', function() {
+        var cityWeather = JSON.parse(body);
+        response.send(cityWeather);
+      });
     });
   });
-
-//http://api.openweathermap.org/data/2.5/weather?q=Edinburgh ,uk&appid=5c40c0443b3cd8ef57196df48e4f638a&units=metric
+//MY API KEY URL: http://api.openweathermap.org/data/2.5/weather?q=Edinburgh ,uk&appid=5c40c0443b3cd8ef57196df48e4f638a&units=metric
 
 
 app.listen('3000', function() {

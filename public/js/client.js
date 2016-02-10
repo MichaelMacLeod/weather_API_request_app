@@ -1,6 +1,6 @@
 // alert('WORKING!!!!!!')
 
-//First, set up a Book constructor: 
+//First, we're setting up a City constructor: 
 var City = function(name) {
   this.url = 'http://localhost:3000/weather/' + name;
   this.data;
@@ -74,4 +74,4 @@ window.onload = function() {
 
 
 
-//Still to come: remove books function. 
+//Still to come: remove city function. 
