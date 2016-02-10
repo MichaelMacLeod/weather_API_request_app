@@ -1,13 +1,9 @@
-// alert('WORKING!!!!!!')
-
 //First, we're setting up a City constructor: 
 var City = function(name) {
   this.url = 'http://localhost:3000/weather/' + name;
   this.data;
 }
 
-
-//In JS, objs inheret from other objs. Instead of defining methods above, where we'd have to define the functions every time, we can create them below to be reused. 
 City.prototype = {
   get: function(callback) {
     var that = this;
@@ -50,7 +46,7 @@ window.onload = function() {
     var name = input.value;
     var currentCity = new City(name);
 
-    //currentBook is an object of the Book object we created at the top of the page. 
+    //currentCity is an object of the City object we created at the top of the page. 
 
 //Here's a callback. When you see a function as an argument, it's a callback. 
     currentCity.get(function() {
