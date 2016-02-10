@@ -4,11 +4,6 @@ var http = require('http');
 var expressLayouts = require('express-ejs-layouts');
 var apiKey = '5c40c0443b3cd8ef57196df48e4f638a'
 
-app.get('/weather', function(req, res) {
-  res.render('weather'); 
-});
-
-
 //App settings
 app.set('views', './views');
 app.set('view engine', 'ejs');
@@ -17,7 +12,7 @@ app.use(expressLayouts);
 app.use(express.static('public'));
 
 app.get('/weather', function(req, res) {
-  res.render('weather')
+  res.render('weather'); 
 });
 
 

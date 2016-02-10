@@ -29,13 +29,13 @@ window.onload = function() {
 
   var displayCities = function() {
 //Clear the loop so we don't duplicate the list: 
-    storedCityView.innerHTML = '';
+    storedCitiesView.innerHTML = '';
     for (city in cities) {
       var data = cities[city];
 
       var li = document.createElement('li');
-      li.innerHTML = data.name + city "</h2>"; 
-      storedCityView.appendChild(li);
+      li.innerHTML = data.name + city; 
+      storedCitiesView.appendChild(li);
     }
 
   };
